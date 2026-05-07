@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Player.States
+﻿namespace Player.States
 {
     public class PlayerHoverState : PlayerBaseState
     {
@@ -8,16 +6,16 @@ namespace Player.States
         {
             Camera.RotateCamera(Input.MouseDelta.y);
             Handler.RotateBody(Input.MouseDelta.x);
+            
+            if (Input.JumpPressed && Handler.IsGrounded)
+                Context.ChangeState<PlayerJumpState>();
         }
 
         public override void FixedUpdate()
         {
             Handler.ApplySpringHover();
             Handler.ApplyDescentGravity();
-
-            Vector3 worldDirection = Context.transform.TransformDirection(Input.MoveVector);
-
-            Handler.Move(worldDirection);
+            Handler.Move(Context.transform.TransformDirection(Input.MoveVector));
         }
     }
 }

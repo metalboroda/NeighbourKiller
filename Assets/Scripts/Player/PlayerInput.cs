@@ -6,6 +6,7 @@ namespace Player
     {
         public Vector3 MoveVector { get; private set; }
         public Vector2 MouseDelta { get; private set; }
+        public bool JumpPressed => Input.GetButtonDown("Jump"); 
 
         private void Start()
         {
@@ -19,11 +20,7 @@ namespace Player
             float z = Input.GetAxisRaw("Vertical");
             
             MoveVector = new Vector3(x, 0, z).normalized;
-            
-            float mouseX = Input.GetAxis("Mouse X");
-            float mouseY = Input.GetAxis("Mouse Y");
-            
-            MouseDelta = new Vector2(mouseX, mouseY);
+            MouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         }
     }
 }

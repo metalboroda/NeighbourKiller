@@ -655,11 +655,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerMovementHandler
   targetHeight: 1.75
   springStiffness: 100
-  springDamping: 10
+  springDamping: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 9
-  fallMultiplier: 10
+  jumpForce: 25
+  fallMultiplier: 50
   moveSpeed: 50
   maxSpeed: 15
   drag: 10

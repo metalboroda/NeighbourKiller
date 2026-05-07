@@ -30,5 +30,10 @@ namespace Player
 
         private void Update() => _fsm.CurrentState?.Update();
         private void FixedUpdate() => _fsm.CurrentState?.FixedUpdate();
+
+        public void ChangeState<T>() where T : class, IState<PlayerController>, new()
+        {
+            _fsm.ChangeState(_stateFactory.GetState<T>());
+        }
     }
 }
