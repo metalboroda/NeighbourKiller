@@ -12,20 +12,23 @@ namespace Player
         [Space]
         [SerializeField] private LayerMask groundLayer;
 
+        [Header("Descent Settings")]
+        [SerializeField] private float fallMultiplier = 10f;
+
         [Header("Movement Settings")]
         [SerializeField] private float moveSpeed = 50f;
         [SerializeField] private float maxSpeed = 15f;
         [SerializeField] private float drag = 10f;
 
-        [Header("Descent Settings")]
-        [SerializeField] private float fallMultiplier = 10f;
+        [Header("Rotation Settings")]
+        [SerializeField] private float rotationSensitivity = 2f;
 
         private Rigidbody _rb;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
-            
+
             _rb.linearDamping = drag;
             _rb.useGravity = true;
             _rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -71,6 +74,11 @@ namespace Player
                     _rb.linearVelocity = new Vector3(horizontalVel.x, vel.y, horizontalVel.z);
                 }
             }
+        }
+
+        public void RotateBody(float mouseX)
+        {
+            transform.Rotate(Vector3.up * mouseX * rotationSensitivity);
         }
     }
 }

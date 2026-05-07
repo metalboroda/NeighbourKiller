@@ -6,5 +6,6 @@ namespace Player.States
     {
         protected PlayerMovementHandler Handler => Context.Handler;
         protected PlayerInput Input => Context.InputProvider;
+        protected PlayerCameraHandler Camera => Context.CameraHandler;
     }
 }
