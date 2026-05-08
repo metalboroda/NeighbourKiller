@@ -13,8 +13,8 @@ namespace Player
         [SerializeField] private LayerMask groundLayer;
 
         [Header("Jump Settings")]
-        [SerializeField] private float jumpForce = 10f;
-        [SerializeField] private float jumpCooldown = 0.5f;
+        [SerializeField] private float jumpForce = 6f;
+        [SerializeField] private float jumpCooldown = 1f;
         [SerializeField] private float fallMultiplier = 25f;
 
         [Header("Ground Movement Settings")]
@@ -31,7 +31,7 @@ namespace Player
 
         public bool IsGrounded { get; private set; }
         public bool CanJump => Time.time >= _nextJumpTime;
-        
+
         private float _nextJumpTime;
 
         private Rigidbody _rb;
@@ -64,7 +64,7 @@ namespace Player
                 }
             }
         }
-        
+
         public void Move(Vector3 direction)
         {
             if (direction.sqrMagnitude < 0.01f) return;
@@ -99,17 +99,22 @@ namespace Player
 
             transform.Rotate(Vector3.up * (mouseX * currentSensitivity));
         }
-        
+
         public void Jump()
         {
             _nextJumpTime = Time.time + jumpCooldown;
 
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, targetHeight + 1.5f, groundLayer))
+                transform.position = hit.point + Vector3.up * (targetHeight + 0.21f);
+
             Vector3 vel = _rb.linearVelocity;
-            
+
             _rb.linearVelocity = new Vector3(vel.x, 0, vel.z);
+            _rb.linearDamping = airDrag;
             _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-        
+
+
         public void ApplyDescentGravity()
         {
             bool inCompressionZone = false;
