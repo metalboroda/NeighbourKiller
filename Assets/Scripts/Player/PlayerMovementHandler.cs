@@ -21,7 +21,7 @@ namespace Player
         [SerializeField] private float moveSpeed = 50f;
         [SerializeField] private float maxSpeed = 15f;
         [SerializeField] private float drag = 10f;
-        [SerializeField] private float rotationSensitivity = 2f;
+        [SerializeField] private float rotationSensitivity = 4f;
 
         [Header("Air Control Settings")]
         [SerializeField] private float airMoveSpeed = 15f;
@@ -39,6 +39,7 @@ namespace Player
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
+            
             _rb.useGravity = true;
             _rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
