@@ -6,8 +6,8 @@
         {
             Camera.RotateCamera(Input.MouseDelta.y);
             Handler.RotateBody(Input.MouseDelta.x);
-            
-            if (Input.JumpPressed && Handler.IsGrounded)
+
+            if (Input.JumpPressed && Handler.IsGrounded && Handler.CanJump)
                 Context.ChangeState<PlayerJumpState>();
         }
 

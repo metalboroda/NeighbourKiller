@@ -13,7 +13,7 @@ namespace Player.States
         {
             Handler.RotateBody(Input.MouseDelta.x);
             Handler.Move(Context.transform.TransformDirection(Input.MoveVector));
-            
+
             if (Context.GetComponent<Rigidbody>().linearVelocity.y <= 0.1f)
                 Context.ChangeState<PlayerInAirState>();
         }

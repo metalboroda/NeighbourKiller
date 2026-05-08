@@ -6,7 +6,6 @@
         {
             Handler.RotateBody(Input.MouseDelta.x);
             Handler.Move(Context.transform.TransformDirection(Input.MoveVector));
-            
             Handler.ApplyDescentGravity();
 
             if (Handler.IsGrounded)
