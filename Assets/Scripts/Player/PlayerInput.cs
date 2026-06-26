@@ -7,6 +7,7 @@ namespace Player
         public Vector3 MoveVector { get; private set; }
         public Vector2 MouseDelta { get; private set; }
         public bool JumpPressed => Input.GetButtonDown("Jump"); 
+        public bool IsFiring => Input.GetButton("Fire1");
 
         private void Start()
         {

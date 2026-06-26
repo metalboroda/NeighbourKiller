@@ -6,13 +6,13 @@ namespace Player.States
     {
         public override void Enter()
         {
-            Handler.Jump();
+            Movement.Jump();
         }
 
         public override void FixedUpdate()
         {
-            Handler.RotateBody(Input.MouseDelta.x);
-            Handler.Move(Context.transform.TransformDirection(Input.MoveVector));
+            Movement.RotateBody(Input.MouseDelta.x);
+            Movement.Move(Context.transform.TransformDirection(Input.MoveVector));
 
             if (Context.GetComponent<Rigidbody>().linearVelocity.y <= 0.1f)
                 Context.ChangeState<PlayerInAirState>();

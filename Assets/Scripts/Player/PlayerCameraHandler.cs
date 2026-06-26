@@ -11,7 +11,7 @@ namespace Player
         [SerializeField] private float minPitch = -85f;
         [SerializeField] private float maxPitch = 85f;
 
-        private float _verticalRotation = 0f;
+        private float _verticalRotation;
 
         public void RotateCamera(float mouseY)
         {
@@ -20,7 +20,9 @@ namespace Player
             _verticalRotation -= mouseY * sensitivity;
             _verticalRotation = Mathf.Clamp(_verticalRotation, minPitch, maxPitch);
             
-            cameraPivot.localRotation = Quaternion.Euler(_verticalRotation, 0, 0);
+            Quaternion targetRotation = Quaternion.Euler(_verticalRotation, 0, 0);
+            
+            cameraPivot.localRotation = targetRotation;
         }
     }
 }

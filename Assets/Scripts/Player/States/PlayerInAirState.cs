@@ -4,11 +4,11 @@
     {
         public override void FixedUpdate()
         {
-            Handler.RotateBody(Input.MouseDelta.x);
-            Handler.Move(Context.transform.TransformDirection(Input.MoveVector));
-            Handler.ApplyDescentGravity();
+            Movement.RotateBody(Input.MouseDelta.x);
+            Movement.Move(Context.transform.TransformDirection(Input.MoveVector));
+            Movement.ApplyDescentGravity();
 
-            if (Handler.IsGrounded)
+            if (Movement.IsGrounded)
                 Context.ChangeState<PlayerHoverState>();
         }
     }
