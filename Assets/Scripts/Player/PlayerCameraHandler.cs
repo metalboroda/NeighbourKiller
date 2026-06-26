@@ -7,7 +7,7 @@ namespace Player
         [Header("Settings")]
         [SerializeField] private Transform cameraPivot;
         [Space]
-        [SerializeField] private float sensitivity = 2f;
+        [SerializeField] private float sensitivity = 4f;
         [SerializeField] private float minPitch = -85f;
         [SerializeField] private float maxPitch = 85f;
 

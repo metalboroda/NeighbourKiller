@@ -30,13 +30,9 @@ namespace Weapons
             if (Physics.Raycast(ray, out RaycastHit hit, range, hitLayers))
             {
                 if (hit.collider.TryGetComponent(out IDamageable damageable))
-                {
                     damageable.TakeDamage(damage);
-                }
                 else
-                {
                     Debug.Log($"Влучили в {hit.collider.name}, але цей об'єкт не отримує шкоди.");
-                }
             }
             
             if (shootPoint && muzzleFlashPrefab)

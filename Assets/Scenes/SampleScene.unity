@@ -543,7 +543,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
+  UpdateMethod: 1
   BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
@@ -795,7 +795,7 @@ MonoBehaviour:
   airMoveSpeed: 15
   airMaxSpeed: 10
   airDrag: 2.5
-  airRotationSensitivity: 1
+  airRotationSensitivity: 4
 --- !u!114 &768888470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerCameraHandler
   cameraPivot: {fileID: 2135325244}
-  sensitivity: 2
+  sensitivity: 4
   minPitch: -85
   maxPitch: 85
 --- !u!136 &768888472

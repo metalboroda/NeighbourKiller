@@ -4,7 +4,6 @@
     {
         public override void Update()
         {
-            Camera.RotateCamera(Input.MouseDelta.y);
             Movement.RotateBody(Input.MouseDelta.x);
 
             if (Input.JumpPressed && Movement.IsGrounded && Movement.CanJump)
@@ -16,6 +15,11 @@
             Movement.ApplySpringHover();
             Movement.ApplyDescentGravity();
             Movement.Move(Context.transform.TransformDirection(Input.MoveVector));
+        }
+        
+        public override void LateUpdate()
+        {
+            Camera.RotateCamera(Input.MouseDelta.y);
         }
     }
 }

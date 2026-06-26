@@ -39,19 +39,13 @@ namespace Player
             if (_input.IsFiring && Time.time >= _nextFireTime)
             {
                 if (_currentAmmo > 0)
-                {
                     TryShoot();
-                }
                 else
-                {
                     StartCoroutine(ReloadRoutine());
-                }
             }
 
             if (Input.GetKeyDown(KeyCode.R) && _currentAmmo < currentWeaponData.maxAmmo)
-            {
                 StartCoroutine(ReloadRoutine());
-            }
         }
 
         private void TryShoot()
@@ -81,13 +75,9 @@ namespace Player
                 _spawnedWeaponInstance = weaponGo.GetComponent<WeaponInstance>();
 
                 if (_spawnedWeaponInstance)
-                {
                     _currentShootPoint = _spawnedWeaponInstance.ShootPoint;
-                }
                 else
-                {
                     _currentShootPoint = weaponPivot;
-                }
             }
 
             NotifyAmmoChange();

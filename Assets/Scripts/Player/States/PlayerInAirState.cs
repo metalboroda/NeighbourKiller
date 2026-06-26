@@ -11,5 +11,10 @@
             if (Movement.IsGrounded)
                 Context.ChangeState<PlayerHoverState>();
         }
+
+        public override void LateUpdate()
+        {
+            Camera.RotateCamera(Input.MouseDelta.y);
+        }
     }
 }

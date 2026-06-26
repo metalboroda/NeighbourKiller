@@ -9,7 +9,6 @@ namespace Player
         public PlayerMovementHandler Handler { get; private set; }
         public PlayerInput InputProvider { get; private set; }
         public PlayerCameraHandler CameraHandler { get; private set; }
-        public PlayerWeaponHandler WeaponHandler { get; private set; }
 
         private FiniteStateMachine<PlayerController> _fsm;
         private StateFactory<PlayerController> _stateFactory;
@@ -19,7 +18,6 @@ namespace Player
             Handler = GetComponent<PlayerMovementHandler>();
             InputProvider = GetComponent<PlayerInput>();
             CameraHandler = GetComponent<PlayerCameraHandler>();
-            WeaponHandler = GetComponent<PlayerWeaponHandler>();
 
             _fsm = new FiniteStateMachine<PlayerController>(this);
             _stateFactory = new StateFactory<PlayerController>(this);
@@ -32,6 +30,7 @@ namespace Player
 
         private void Update() => _fsm.CurrentState?.Update();
         private void FixedUpdate() => _fsm.CurrentState?.FixedUpdate();
+        private  void LateUpdate() => _fsm.CurrentState?.LateUpdate();
 
         public void ChangeState<T>() where T : class, IState<PlayerController>, new()
         {
